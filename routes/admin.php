@@ -32,10 +32,11 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'Auth:admin'], function ()
      Route::get('/edit/{id}','MainCategoriesController@edit')->name('admin.maincategories.edit');
      Route::post('/update/{id}','MainCategoriesController@update')->name('admin.maincategories.update');
      Route::get('/delete/{id}','MainCategoriesController@destroy')->name('admin.maincategories.destroy');
-    });
-     // end of maincategories routes
+     Route::get('/changeStatus/{id}','MainCategoriesController@changeStatus')->name('admin.maincategories.changeStatus');
 
-     
+    });
+      // end of maincategories routes
+    
      Route::group(['prefix'=>'vendors'],function(){
         Route::get('/','VendorsController@index')->name('admin.vendors');
         Route::get('/create','VendorsController@create')->name('admin.vendors.create');

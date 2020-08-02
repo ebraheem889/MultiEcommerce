@@ -25,7 +25,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">جميع لغات الموقع </h4>
+                                    <h4 class="card-title">التجار في الموقع </h4>
                                     <a class="heading-elements-toggle"><i
                                             class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
@@ -48,38 +48,33 @@
                                             class="table display nowrap table-striped table-bordered scroll-horizontal ">
                                             <thead>
                                             <tr>
-                                                <th> القسم</th>
-                                                <th>اللغة</th>
-                                                <th>الصورة</th> 
+                                                <th> الاسم </th>
+                                                <th>اللوجو</th>
+                                                <th>الهاتف</th>
+                                                <th>القسم الرئيسي</th> 
                                                 <th>الحالة</th>
                                                 <th>الإجراءات</th>
                                             </tr>
                                             </thead>
                                             <tbody>
 
-                                            @isset($Categories)
-                                                @foreach($Categories as $Category)
+                                            @isset($vendors)
+                                                @foreach($vendors as $vendor)
                                             <tr>
-                                                <td>{{$Category->name}}</td>
-                                                <td>{{$Category->translation_lang }}</td>
-                                                <td><img style="width: 150px; height: 100px;"  src="{{$Category->photo}}"></img></td>
-                                                <td>{{$Category->getActive()}}</td>
+                                                <td>{{$vendor->name}}</td>
+                                                <td><img style="width: 150px; height: 100px;"  src="{{$vendor->logo}}"></img></td>
+                                                <td>{{$vendor->mobile}}</td>
+                                                <td>{{$vendor->category->name}}</td>
+                                                <td>{{$vendor->getActive()}}</td>
                                                 <td>
                                                     <div class="btn-group" role="group"
                                                          aria-label="Basic example">
-                                                        <a href="{{route('admin.maincategories.edit',$Category->id)}}"
+                                                        <a href="{{route('admin.vendors.edit',$vendor->id)}}"
                                                            class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">تعديل</a>
-                                                        <a href="{{route('admin.maincategories.destroy',$Category->id)}}"
+                                                        <a href="{{route('admin.vendors.destroy',$vendor->id)}}"
                                                            class="btn btn-outline-danger btn-min-width box-shadow-3 mr-1 mb-1">حذف</a>
-                                                           <a href="{{route('admin.maincategories.changeStatus',$Category->id)}}"
-                                                           class="btn btn-outline-info btn-min-width box-shadow-3 mr-1 mb-1">
-                                                        
-                                                        @if($Category-> active == 1) 
-                                                            الغاء التفعيل 
-                                                        @else
-                                                             تفعيل
-                                                        @endif
-                                                        </a>
+                                                           <a href="#"
+                                                           class="btn btn-outline-info btn-min-width box-shadow-3 mr-1 mb-1">الغاء تفعيل</a>
 
 
 
